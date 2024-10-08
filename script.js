@@ -1,6 +1,13 @@
-document.querySelectorAll('.project a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevents the default link behavior for demonstration
-                alert("This project is still in progress: " + link.parentElement.querySelector('h3').textContent);
-            });
-        });
+function showAlertBeforeOpening(link) {
+  alert("This project is still incomplete.");
+  window.open(link, "_blank");
+}
+
+
+document.querySelectorAll("a.incomplete-project").forEach(function(linkElement) {
+  linkElement.addEventListener("click", function(event) {
+    event.preventDefault(); 
+    const link = linkElement.getAttribute("href"); 
+    showAlertBeforeOpening(link); 
+  });
+});
